@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Attendance" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=YOURMUM;Initial Catalog=Attendance;Integrated Security=True" SettingsObjectName="AttenRegister.Properties.Settings" SettingsPropertyName="AttendanceConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.Add_History" Method="Add_History">
+    <Parameter Name="BarCode" Parameter="barCode" Type="System.String" DbType="VarChar(35)" />
+    <Parameter Name="pic" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="searchdate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Add_Student" Method="Add_Student">
+    <Parameter Name="BarCode" Parameter="barCode" Type="System.String" DbType="VarChar(35)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="age" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="phone" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Grade" Parameter="grade" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pic" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.backupdb" Method="backupdb">
+    <Parameter Name="location" Type="System.String" DbType="VarChar(120)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alter_history" Method="alter_history">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Del_Student" Method="Del_Student">
+    <Parameter Name="BarCode" Parameter="barCode" Type="System.String" DbType="VarChar(35)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Get_allStudent" Method="Get_allStudent">
+    <ElementType Name="Get_allStudentResult">
+      <Column Name="BarCode" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_allHistory" Method="Get_allHistory">
+    <ElementType Name="Get_allHistoryResult">
+      <Column Name="ID_History" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BarCode" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Student" Method="Get_Student">
+    <Parameter Name="BarCode" Parameter="barCode" Type="System.String" DbType="VarChar(35)" />
+    <ElementType Name="Get_StudentResult">
+      <Column Name="BarCode" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Search_History" Method="Search_History">
+    <Parameter Name="date" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="Search_HistoryResult">
+      <Column Name="ID_History" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BarCode" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
