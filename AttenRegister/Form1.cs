@@ -19,11 +19,12 @@ namespace AttenRegister
         {
             InitializeComponent();
         }
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 dgvStudent.DataSource = dtbase.Get_allStudent();
                 CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
                 FinalFrame = new VideoCaptureDevice(CaptureDevice[0].MonikerString);// specified web cam and its filter moniker string
@@ -31,12 +32,18 @@ namespace AttenRegister
                 FinalFrame.VideoResolution = FinalFrame.VideoCapabilities[11];
                 FinalFrame.Start();
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show(ee.ToString());
             }
+            
         }
-        void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs) // must be void so that it can be accessed everywhere.
+       public string Fname()
+        {
+          var name0 =  txtName.Text;
+            return name0;
+        }
+    void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs) // must be void so that it can be accessed everywhere.
         {
             try { 
             camPreview.Image = (Bitmap)eventArgs.Frame.Clone();// clone the bitmap
@@ -48,31 +55,32 @@ namespace AttenRegister
         }
         private void btnTakePhoto_Click(object sender, EventArgs e)
         {
-            try
-            {
-                
-                if (!Directory.Exists(@"C:\attenTools\image"))
+                try
                 {
-                    Directory.CreateDirectory(@"C:\attenTools\image");
-                }
-                else
-                {
-                    Guid g = Guid.NewGuid();
-                    camPreview.Image.Save($@"C:\attenTools\image\StudentImage-{g}.jpeg", ImageFormat.Jpeg);
+                    if (!Directory.Exists($@"C:\attenTools\image"))
+                    {
+                        Directory.CreateDirectory($@"C:\attenTools\image");
+                    }
+                    else
+                    {
 
-                }
+                        camPreview.Image.Save($@"C:\attenTools\image\StudentImage {Fname()}.jpeg", ImageFormat.Jpeg);
+
+                    }
+
                     using (Bitmap bmb = new Bitmap(camPreview.Image))
                     {
-                    
+
                         MemoryStream m = new MemoryStream();
                         bmb.Save(m, ImageFormat.Jpeg);
                         picPreview.Image = Image.FromStream(m);
                     }
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.ToString());
-            }
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee.ToString());
+                }
+            
         }
         private void frmAddStudent_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -86,13 +94,16 @@ namespace AttenRegister
                 MessageBox.Show(ee.ToString());
             }
         }
+    
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
 
-            var g = Guid.NewGuid();
-                using (Image img = Image.FromFile($@"C:\attenTools\image\StudentImage-{g}.jpeg"))
+            try
+            {
+                using (Image img = Image.FromFile($@"C:\attenTools\image\StudentImage {Fname()}.jpeg"))
                 {
                     MemoryStream ms = new MemoryStream();
                     img.Save(ms, img.RawFormat);
@@ -106,7 +117,12 @@ namespace AttenRegister
                 txtName.Clear();
                 txtPhone.Clear();
                 picPreview.Image = null;
-            MessageBox.Show("Added Successfully");
+                MessageBox.Show("Added Successfully");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+            }
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -193,14 +209,14 @@ namespace AttenRegister
         {
             try
             {
-                if (!Directory.Exists(@"C:\attenTools\backup"))
+                if (!Directory.Exists($@"C:\attenTools\backup"))
                 {
-                    Directory.CreateDirectory(@"C:\attenTools\backup");
+                    Directory.CreateDirectory($@"C:\attenTools\backup");
                 }
                 else
                 {
-                    dtbase.backupdb(@"C:\attenTools\backup\Attendance.bak");
-                    MessageBox.Show("baCkup Successfully", "ALERT", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dtbase.backupdb($@"C:\attenTools\backup\Attendance.bak");
+                    MessageBox.Show("backup Successfully", "ALERT", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -213,7 +229,7 @@ namespace AttenRegister
         {
             try
             {
-                string path = @"C:\attenTools\backup\Attendance.bak";
+                string path = $@"C:\attenTools\backup\Attendance.bak";
                 dtbase.ExecuteCommand(@"ALTER DATABASE Attendance SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
                 dtbase.ExecuteCommand(@"USE MASTER RESTORE DATABASE Attendance FROM DISK = '" + path + "' WITH REPLACE");
                 dtbase.ExecuteCommand(@"ALTER DATABASE Attendance SET MULTI_USER");
@@ -224,6 +240,37 @@ namespace AttenRegister
                 MessageBox.Show(ex.ToString());
             }
         }
-        
+      
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                btnTakePhoto.Enabled = !string.IsNullOrEmpty(txtName.Text);
+
+            }
+
+
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+            }
+        }
+
+            private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                while (dgvStudent.Rows.Count > 0)
+                {
+                    dgvStudent.Rows.Remove(dgvStudent.Rows[0]);
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+            }
+        }
+    
     }
-}
+    }
+

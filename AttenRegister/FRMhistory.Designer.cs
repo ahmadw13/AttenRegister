@@ -81,7 +81,7 @@
             this.datesearch.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datesearch.Location = new System.Drawing.Point(317, 12);
             this.datesearch.Name = "datesearch";
-            this.datesearch.Size = new System.Drawing.Size(253, 36);
+            this.datesearch.Size = new System.Drawing.Size(253, 30);
             this.datesearch.TabIndex = 3;
             this.datesearch.ValueChanged += new System.EventHandler(this.datesearch_ValueChanged);
             // 
@@ -127,7 +127,7 @@
             // 
             // FRMhistory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(984, 586);
@@ -143,6 +143,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximizeBox = false;
             this.Name = "FRMhistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "History";

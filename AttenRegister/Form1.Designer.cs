@@ -48,6 +48,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
@@ -56,67 +57,68 @@
             // lblBarCode
             // 
             this.lblBarCode.AutoSize = true;
-            this.lblBarCode.Location = new System.Drawing.Point(59, 52);
+            this.lblBarCode.Location = new System.Drawing.Point(35, 81);
             this.lblBarCode.Name = "lblBarCode";
-            this.lblBarCode.Size = new System.Drawing.Size(112, 29);
+            this.lblBarCode.Size = new System.Drawing.Size(85, 25);
             this.lblBarCode.TabIndex = 0;
-            this.lblBarCode.Text = "BarCode";
+            this.lblBarCode.Text = "Barcode";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(85, 88);
+            this.lblName.Location = new System.Drawing.Point(35, 43);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(81, 29);
+            this.lblName.Size = new System.Drawing.Size(64, 25);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Name";
             // 
             // lblAge
             // 
             this.lblAge.AutoSize = true;
-            this.lblAge.Location = new System.Drawing.Point(101, 124);
+            this.lblAge.Location = new System.Drawing.Point(35, 119);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(58, 29);
+            this.lblAge.Size = new System.Drawing.Size(48, 25);
             this.lblAge.TabIndex = 2;
             this.lblAge.Text = "Age";
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(80, 160);
+            this.lblPhone.Location = new System.Drawing.Point(35, 157);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(86, 29);
+            this.lblPhone.Size = new System.Drawing.Size(69, 25);
             this.lblPhone.TabIndex = 3;
             this.lblPhone.Text = "Phone";
             // 
             // lblGrade
             // 
             this.lblGrade.AutoSize = true;
-            this.lblGrade.Location = new System.Drawing.Point(83, 196);
+            this.lblGrade.Location = new System.Drawing.Point(35, 193);
             this.lblGrade.Name = "lblGrade";
-            this.lblGrade.Size = new System.Drawing.Size(82, 29);
+            this.lblGrade.Size = new System.Drawing.Size(66, 25);
             this.lblGrade.TabIndex = 4;
             this.lblGrade.Text = "Grade";
             // 
             // txtBarCode
             // 
-            this.txtBarCode.Location = new System.Drawing.Point(155, 49);
+            this.txtBarCode.Location = new System.Drawing.Point(155, 81);
             this.txtBarCode.Name = "txtBarCode";
-            this.txtBarCode.Size = new System.Drawing.Size(242, 36);
+            this.txtBarCode.Size = new System.Drawing.Size(242, 30);
             this.txtBarCode.TabIndex = 5;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(155, 85);
+            this.txtName.Location = new System.Drawing.Point(155, 43);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(242, 36);
+            this.txtName.Size = new System.Drawing.Size(242, 30);
             this.txtName.TabIndex = 6;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(155, 121);
+            this.txtAge.Location = new System.Drawing.Point(155, 119);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(242, 36);
+            this.txtAge.Size = new System.Drawing.Size(242, 30);
             this.txtAge.TabIndex = 7;
             this.txtAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAge_KeyPress);
             // 
@@ -124,7 +126,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(155, 157);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(242, 36);
+            this.txtPhone.Size = new System.Drawing.Size(242, 30);
             this.txtPhone.TabIndex = 8;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
@@ -132,7 +134,7 @@
             // 
             this.txtGrade.Location = new System.Drawing.Point(155, 193);
             this.txtGrade.Name = "txtGrade";
-            this.txtGrade.Size = new System.Drawing.Size(242, 36);
+            this.txtGrade.Size = new System.Drawing.Size(242, 30);
             this.txtGrade.TabIndex = 9;
             // 
             // dgvStudent
@@ -196,6 +198,7 @@
             // 
             // btnTakePhoto
             // 
+            this.btnTakePhoto.Enabled = false;
             this.btnTakePhoto.Location = new System.Drawing.Point(773, 203);
             this.btnTakePhoto.Name = "btnTakePhoto";
             this.btnTakePhoto.Size = new System.Drawing.Size(199, 30);
@@ -234,12 +237,24 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(403, 14);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(137, 32);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Clear the fields";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // frmAddStudent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(984, 586);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -263,6 +278,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximizeBox = false;
             this.Name = "frmAddStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registry";
@@ -297,6 +313,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 
