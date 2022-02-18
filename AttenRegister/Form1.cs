@@ -19,8 +19,6 @@ namespace AttenRegister
         {
             InitializeComponent();
         }
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -94,13 +92,8 @@ namespace AttenRegister
                 MessageBox.Show(ee.ToString());
             }
         }
-    
-
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 using (Image img = Image.FromFile($@"C:\attenTools\image\StudentImage {Fname()}.jpeg"))
@@ -133,7 +126,6 @@ namespace AttenRegister
                     dtbase.Del_Student(dgvStudent.CurrentRow.Cells[0].Value.ToString());
                     dgvStudent.DataSource = dtbase.Get_allStudent();
                     MessageBox.Show("Deleted successfully", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 else
                 {
@@ -273,4 +265,3 @@ namespace AttenRegister
     
     }
     }
-
